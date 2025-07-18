@@ -1,0 +1,213 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li><a class="Heading">
+                        <p class="Heading">Accepted Tickets</p>
+                    </a>
+                    <hr class="line-border">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="assets/Images/revamp/filter.svg" class="filter-img">
+                <p class="filter">Filter by:</p>
+            </div>
+
+            <div class="cardinputs">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="search" class="form-control search-icon">
+            </div>
+            <div class="cardinputs">
+                <input type="bsdate" placeholder="mm/dd/yyyy-mm/dd/yyyy" class="form-control" bsDaterangepicker
+                    [(ngModel)]="date" [bsConfig]="{ showWeekNumbers:false }" (ngModelChange)="getEndDate($event)">
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredDepartment($event)">
+                    <option value="" selected disabled>Select Department</option>
+                    <option *ngFor="let data of departmentData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredCity($event)">
+                    <option value="" selected disabled>Select City</option>
+                    <option *ngFor="let data of cityData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-slider--container">
+        <div  id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{(accpetList|filter:search)?.length}}  </span>RESULT(S)</p>
+                </div>
+            </div>
+
+            <div class="listscroll">
+                <table class="table">
+                    <thead>
+                        <tr class="head">
+                            <th>Ticket No</th>
+                            <th>Raised Date</th>
+                            <th>Accepted Date</th>
+                            <th>Assigned To</th>
+                            <th>Subject</th>
+                            <th>Issues</th>
+                            <th>Department</th>
+                            <th>City</th>
+                            <th>Area</th>
+                            <!-- <th>Response</th> -->
+                            <th>Attachment</th>
+                            <th>Aging</th>
+                            <th *ngIf="roleID != 1">Action</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let data of accpetList | filter:search |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td>0000{{data.id}}</td>
+                            <td>{{data.raisedDate|date}}</td>
+                            <td>{{data.acceptedDate|date}}</td> 
+                             <td>{{data.staffname}}</td> 
+                            <td>{{data.subject}}</td>       
+                            <td>{{data.issue}}</td>
+                            <td>{{data.departmentName}}</td> 
+                            <td>{{data.cityName}}</td>
+                            <td>{{data.area}}</td>
+                            <!-- <td>{{data.closingComments}}</td> -->
+                            <td >
+                                <a href="{{data.attachment}}" target="_blank"> <img src="assets/Images/image.png" *ngIf="data.attachment!==null" 
+                                        style="width:20px; height:20px" alt="data.img"></a>
+                                        <p *ngIf="data.attachment==null">'NA'</p>
+                            </td>
+                            <td>{{data.aging}}</td>
+                            <td *ngIf="roleID != 1" >
+                                <img *ngIf="data.assignedAgent == null && roleID == 3"  class="dashedit-icon" (click)="gettciket(data)" src="assets/Images/assign.png" data-toggle="modal" data-target="#assignModal"
+                                [ngbTooltip]="tipContentApprove"
+                               tooltipClass="my-custom-class"
+                              >
+                              <div class="col-lg-2 Text p-0">
+                                <ng-template #tipContentApprove>
+                                    <div>
+                                        <div class="d-flex">
+                                            <div class="flex-column mt-2">
+                                                <p class="tooltip-txtForIcons">Assign</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                            <button *ngIf="data.assignedAgent!=null && roleID == 2" class="edit-btn" style="width:100%" data-toggle="modal"
+                            data-target="#completeModal" (click)="gettciket(data)">
+                            Complete</button>
+                            </td>
+                         
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="NoResultShow" *ngIf="(accpetList).length==0">
+                    <b>Sorry, we couldn't find any results.</b></span> <br>
+            </div>
+
+            <div class="text-right" >
+                <br>
+                <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""
+                    class="poppinns"></pagination-controls>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
+
+<div id="assignModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Assign Details</h4>
+                <div data-toggle="tooltip" title="Add Attachments" data-dismiss="modal">
+                </div>
+                <button type="button" class="close " data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="popupcontent">
+                    <div class="popupinputs">
+                        <p>Assigned To<span class="span">*</span></p>
+                        <div>
+                            <select class="form-control inputfield select" id="assignedAgent" name="assignedAgent"
+                                [(ngModel)]="assignedAgent">
+                                <option value="" disabled selected>Select Agent</option>
+                                <option value="{{Use.id}}" *ngFor="let Use of staffData">{{Use.firstName}}
+                                </option>
+                                
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="popupinputs">
+                        <p>Comments<span class="span"></span></p>
+                        <div>
+                            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="assignComments"></angular-editor>
+                            <!-- <textarea type="text" class="form-control" rows="4" placeholder="Comments"
+                                [(ngModel)]="assignComments" name="assignComments" id="assignComments"></textarea> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="submit-button" (click)="AssignTickets()" data-dismiss="modal">Assign</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="completeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Close Ticket</h4>
+                <div data-toggle="tooltip" title="Add Attachments" data-dismiss="modal">
+                </div>
+                <button type="button" class="close " data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="popupcontent">
+                    <div class="popupinputs">
+                        <p>Attachment</p>
+                        <div>
+                            <ngx-dropzone accept=".png,.jpg,.jpeg" (change)="onSelect21($event)" class="dropFile">
+                                <img src="assets/Images/MicrosoftTeams-image.png" *ngIf="attachments21.length==0"
+                                    class="img-set dropdowning">
+                                <ngx-dropzone-label>Drop files here<br>only jpg/png/jpeg (max
+                                    5mb)</ngx-dropzone-label>
+                                <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                                    (removed)="onRemove21(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-preview>
+                            </ngx-dropzone>
+                        </div>
+                    </div>
+
+                    <div class="popupinputs">
+                        <p>Closing Comments<span class="span"></span></p>
+                        <div>
+                            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="closingComments"></angular-editor>
+                            <!-- <textarea type="text" class="form-control" rows="4" placeholder="ClosingComments"
+                                [(ngModel)]="ClosingComments" name="ClosingComments" id="ClosingComments"></textarea> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="submit-button" (click)="submit()" data-dismiss="modal">Complete</button>
+            </div>
+        </div>
+    </div>
+</div>

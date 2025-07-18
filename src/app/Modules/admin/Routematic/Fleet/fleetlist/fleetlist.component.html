@@ -1,0 +1,114 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li><a class="Heading">
+                        <p class="Heading">Fleet</p>
+                    </a>
+                    <hr class="line-border">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="assets/Images/revamp/filter.svg" class="filter-img">
+                <p class="filter">Filter by:</p>
+            </div>
+
+            <div class="cardinputs">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="search" class="form-control search-icon">
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredType($event)">
+                    <option selected value="0">Select Vehicle Type</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="TT">Tempo Traveller</option>
+                </select>
+            </div>
+            <div class="cardinputs" (click)="showDialog()">
+                <button class="butn-sadow"> <img src="assets/Images/plus.svg" class="plus-icon">Add Fleet</button>
+            </div>
+            <!-- <div class="cardinputs">
+                <button class="butn-sadow" type="button" >Reset</button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="tab-slider--container">
+        <div id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span> {{fleetList.length}} </span>RESULT(S)</p>
+                </div>
+            </div>
+
+            <div class="listscroll">
+                <table class="table">
+                    <thead>
+                        <tr class="head">
+                            <th>Fleet Type</th>
+                            <th>Vehicle Reg No</th>
+                            <th>Route No</th>
+                            <th>Tracker ID</th>
+                            <th>Driver Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let data of fleetList | filter:search | paginate: { itemsPerPage: 25, currentPage: page }">
+                            <td>{{data.vehicleType}}</td>
+                            <td>{{data.vehicleRegNo}}</td>
+                            <td>{{data.routeCode}}</td>
+                            <td>{{data.trackeeID}}</td>
+                            <td>{{data.driverName}}</td>
+                            <td class="onelinetext"> <img class="dashedit-icon" src="assets/Images/Edit.svg"
+                                    (click)="edit(data.id)" [ngbTooltip]="tipContenteidt"
+                                    tooltipClass="my-custom-class">
+                                <img class="dashedit-icon" (click)="openDeletePopUp(data.id)"
+                                    [ngbTooltip]="tipContentCancel" src="assets/Images/delete.svg"
+                                    tooltipClass="my-custom-class">
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #tipContentCancel>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Delete</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+
+                                    <ng-template #tipContenteidt>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Edit</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="NoResultShow" *ngIf="(fleetList).length==0">
+                    <b>Sorry, we couldn't find any results.</b></span> <br>
+            </div>
+
+            <div class="text-right">
+                <br>
+                <pagination-controls previousLabel="" (pageChange)="page = $event" nextLabel=""
+                    class="poppinns"></pagination-controls>
+            </div>
+        </div>
+
+
+    </div>
+</div>

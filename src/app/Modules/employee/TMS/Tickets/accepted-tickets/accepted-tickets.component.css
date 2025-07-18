@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+  }
+  .close-btn{
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 165px;
+    height: 50px;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    letter-spacing: 0.658333px;
+    color: #FFFFFF;
+    background: red;
+    border-radius: 5px solid red;
+    border: 2px solid red;
+    text-transform: capitalize !important;
+    font-size: 15px !important;
+    margin: 5px !important;
+  
+  }

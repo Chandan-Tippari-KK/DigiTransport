@@ -1,0 +1,132 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add Staff</p>
+        <img
+          src="assets/Images/revamp/cancle-icon.png"
+          (click)="cancel()"
+          class="closeicon"
+        />
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>FirstName<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="FirstName"
+              name="FirstName"
+              [(ngModel)]="FirstName"
+              id="FirstName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>LastName<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="LastName"
+              name="LastName"
+              [(ngModel)]="LastName"
+              id="LastName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Date Of Joining<span class="span">*</span></p>
+          <div>
+            <input
+              type="Date"
+              class="form-control" 
+              name="DateOfJoining"
+              [(ngModel)]="DateOfJoining"
+              id="DateOfJoining"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>AadharNo<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="AadharNo"
+              name="AadharNo"
+              [(ngModel)]="AadharNo"
+              maxlength="12"
+              id="AadharNo"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Mobile No<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Mobile No"
+              name="MobileNo"
+              [(ngModel)]="MobileNo"
+              maxlength="10"
+              id="MobileNo"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Email<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Email"
+              name="Email"
+              [(ngModel)]="Email"
+              id="Email"
+            />
+          </div>
+        </div>
+   
+        <div class="popupinputs">
+          <p>Address<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Address"
+              name="Address"
+              [(ngModel)]="Address"
+              id="Address"
+            />
+          </div>
+        </div>
+         <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="insertStaffGuard()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="updateStaffGuard()"
+          >
+            Update
+          </button>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

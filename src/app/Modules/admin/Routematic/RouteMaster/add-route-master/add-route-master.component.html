@@ -1,0 +1,55 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Add Route Master</p>
+                <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>Route Code<span class="span"></span></p>
+                    <div>
+                        <input type="text" placeholder="RouteCode" class="form-control" name="RouteCode"
+                            [(ngModel)]="routeCode" id="RouteCode">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Locations<span class="span"></span></p>
+                    <div>
+                        <ng-multiselect-dropdown [settings]="dropdownSettings" [placeholder]="'Select Locations'" [data]="areaListCopy" [(ngModel)]="locations">
+                        </ng-multiselect-dropdown> 
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Start Location<span class="span"></span></p>
+                    <div>
+                        <select class="form-control inputfield" id="startLocation" [(ngModel)]="startLocation"
+                            name="startLocation">
+                            <option selected disabled value="">Select start Location</option>
+                            <option value="{{data.short}}" *ngFor="let data of areaList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>End Location<span class="span"></span></p>
+                    <div>
+                        <select class="form-control inputfield" id="endLocation" [(ngModel)]="endLocation"
+                            name="endLocation">
+                            <option selected disabled value="">Select End Location</option>
+                            <option value="{{data.short}}" *ngFor="let data of areaList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+                    <button class="close-button" (click)="cancel()">Cancel</button>
+                    <button class="submit-button" *ngIf="ID==undefined" (click)="InsertRoute()">Submit</button>
+                    <button class="submit-button" *ngIf="ID!=undefined" (click)="UpdateRoute()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

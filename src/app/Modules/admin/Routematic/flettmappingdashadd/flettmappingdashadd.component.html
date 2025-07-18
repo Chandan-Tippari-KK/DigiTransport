@@ -1,0 +1,83 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Map Fleet</p>
+                <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>Fleet Type<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="vehicleType" name="vehicleType"
+                            [(ngModel)]="vehicleType" (change)="getfleet()" name="vehicleType">
+                            <option selected disabled value="0">Select Vehicle Type</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Bus">Bus</option>
+                            <option value="TT">Tempo Traveller</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Fleet<span class="span"></span></p>
+                    <div>
+                        <select class="form-control inputfield" id="FleetID" name="FleetID" [(ngModel)]="FleetID">
+                            <option selected disabled value="0">Select Fleet</option>
+                            <option *ngFor="let data of Fleetlist" value="{{ data.id }}">
+                                {{ data.vehicleRegNo }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Driver<span class="span"></span></p>
+                    <div>
+                        <select class="form-control inputfield" id="DriverID" name="DriverID" [(ngModel)]="DriverID">
+                            <option selected disabled value="0">Select Driver</option>
+                            <option *ngFor="let data of DriverData" value="{{ data.id }}">
+                                {{ data.driverName }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="popupinputs">
+                    <p>Date<span class="span">*</span></p>
+                    <div>
+                        <input type="date" class="form-control" name="Date" id="Date" [(ngModel)]="Date">
+                    </div>
+                </div> -->
+
+                <!-- <div class="popupinputs">
+                    <p>Trip Type<span class="span"></span></p>
+                    <div>
+                        <select class="form-control inputfield" id="TripType" name="TripType" [(ngModel)]="TripType">
+                            <option selected disabled value="0">Select Trip Type</option>
+                            <option value="1">Log In</option>
+                            <option value="2">Log Out</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <!-- <div class="popupinputs">
+                    <p>Route<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="RouteID" name="RouteID" [(ngModel)]="RouteID">
+                            <option selected disabled value="0">Select Route</option>
+                            <option *ngFor="let data of RouteData" value="{{ data.id }}">
+                                {{ data.routeCode }}
+                            </option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+                    <button class="close-button" (click)="cancel()">Cancel</button>
+                    <button class="submit-button" (click)="insertCustomer()">Assign</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Add Area Master</p>
+                <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>Area<span class="span"></span></p>
+                    <div>
+                        <input type="text" placeholder="Area"class="form-control" name="Short" [(ngModel)]="short"id="Short">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Description<span class="span"></span></p>
+                    <div>
+                        <input type="text" placeholder="Description" class="form-control" name="Description"[(ngModel)]="description" id="Description">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Latitude<span class="span"></span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Latitude" name="Latitude"[(ngModel)]="latitude" id="Latitude">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Longitude<span class="span"></span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Longitude" name="Longitude" [(ngModel)]="longitude"id="Longitude">
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+                    <button class="close-button" (click)="cancel()">Cancel</button>
+                    <button class="submit-button" *ngIf="ID==undefined"  (click)="InsertArea()">Submit</button>
+                    <button class="submit-button" *ngIf="ID!=undefined" (click)="UpdateArea()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

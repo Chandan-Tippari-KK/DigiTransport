@@ -1,0 +1,62 @@
+<app-spinner *ngIf="loader"></app-spinner>
+<app-commonalertpage [messageId]="messageId"  *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid  fullscreen">
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+            <div class="loginBox d-flex justify-content-center">
+                <div class="inputFieldBox">
+                    <img src="assets/Images/digiTransport.svg" class="digi-logo"><br>
+                  
+                    <div class="input-group ">
+                        <select class="inputclass padp-20" (change)="GetloginType($event)">
+                            <option selected>Select Type</option>
+                            <option value="1">Speedo</option>
+                            <option value="2">Client</option>
+                            <option value="3">Employee</option>
+                        </select>
+                        <img class="imgview" src="assets/Images/dropdown.svg">
+                    </div>
+                  
+
+                    <div class="input-group ">
+                        <input type="text" class="inputclass" [(ngModel)]="username" name="username">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="placeholder">Username</label>
+                    </div>
+
+                    <div class="input-group ">
+                        <input *ngIf="showpassword==0" type="password" class="inputclass" [(ngModel)]="password"
+                            name="password" />
+                        <input *ngIf="showpassword==1" type="text" class="inputclass" [(ngModel)]="password"
+                            name="password" />
+                        <img class="paswordview" (click)="Showhidepassword()" src="assets/Images/view.svg">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="placeholder">Password</label>
+                    </div>
+                    <br>
+
+                    <div class="d-flex flex-column w-100">
+                        <div class="d-flex justify-content-between align-item-center">
+                            <div>
+                                <a data-target="#changepassword" data-toggle="modal" class="forget"> Forgot
+                                    Password</a>
+                            </div>
+                            <button type="button" class="loginBtn" (click)="login()">Log In</button>
+                        </div>
+                    </div><br><br>
+
+                    <div class="d-flex  align-item-center">
+                        <p class="text-center"><b>Copyright © 2023 AMAZE ONE. All Rights Reserved</b></p>
+                    </div>
+                </div>
+
+                <div class="imageBlock">
+                    <img src={{imgurl}} class="logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

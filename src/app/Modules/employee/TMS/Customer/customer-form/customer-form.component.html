@@ -1,0 +1,112 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Register</p>
+                <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>First Name<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="firstName" name="firstName"
+                            id="firstName">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Last Name<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+                        [(ngModel)]="lastName" id="lastName">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Phone Number<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Phone Number" pattern="[6789][0-9]{9}" maxlength="10" [(ngModel)]="phoneNo" name="phoneNo"
+                            id="phoneNo">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Email ID<span class="span">*</span></p>
+                    <div [class.invalid]="!isValidEmail">
+                        <input type="text" class="form-control" placeholder="Email ID" [(ngModel)]="emailID" name="emailID"
+                            id="emailID" (click)="validateEmail()" >
+
+                    </div>
+                    <div *ngIf="!isValidEmail" class="validation-message">Invalid email address</div>
+                </div>
+                <!-- <div class="popupinputs">
+                    <p>Password<span class="span">*</span></p>
+                    <div>
+                        <input type="password" [maxlength]="4" class="form-control" placeholder="Password" [(ngModel)]="password" name="password">
+                        <div class="validation-message" *ngIf="!validatePassword()">Password must be at least 4 characters long.</div>
+                    </div>
+                </div> -->
+                <div class="popupinputs">
+                    <p>PIN<span class="span">*</span></p>
+                    <div id="otp" class="flex justify-center">
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="first" [(ngModel)]="first"   maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="second" [(ngModel)]="second" maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="third" [(ngModel)]="third" maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="fourth" [(ngModel)]="fourth" maxlength="1" />
+                      </div>
+                </div>
+                <!-- <div class="popupinputs">
+                    <p>Confirm Password<span class="span">*</span></p>
+                    <div>
+                        <input type="password" [maxlength]="4" class="form-control" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword">
+                        <div class="validation-message" *ngIf="!passwordsMatch()">Passwords do not match.</div>
+                    </div>
+                </div> -->
+                <div class="popupinputs">
+                    <p>Confirm PIN<span class="span">*</span></p>
+                    <div id="otp" class="flex justify-center">
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="first1" [(ngModel)]="first1"   maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="second1" [(ngModel)]="second1" maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="third1" [(ngModel)]="third1" maxlength="1" />
+                        <input class="passwordbox m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline aa" type="text" id="fourth1" [(ngModel)]="fourth1" (ngModelChange)="getconfirmpassword()" maxlength="1" />
+                      </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Country<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="Status" [(ngModel)]="country"  name="Status" >
+                            <option selected disabled value="">Select Country</option>
+                            <option value="{{data.short}}" *ngFor="let data of countryList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>State<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="Status" [(ngModel)]="state"  name="Status" >
+                            <option selected disabled value="">Select State</option>
+                            <option value="{{data.short}}" *ngFor="let data of stateList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>City<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="Status" [(ngModel)]="city"  name="Status" >
+                            <option selected disabled value="">Select City</option>
+                            <option value="{{data.short}}" *ngFor="let data of cityList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+                    <button class="close-button" (click)="cancel()">Cancel</button>
+                    <button  *ngIf="ID==undefined"   class="submit-button" (click)="insertCustomer()">Submit</button>
+                    <button  *ngIf="ID!=undefined"  class="submit-button" (click)="UpdateCustomer()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

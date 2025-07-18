@@ -1,0 +1,131 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add Trip</p>
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>Date<span class="span">*</span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              name="Date"
+              id="Date"
+              [(ngModel)]="Date"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Trip Type<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="triptype"
+              name="triptype"
+              [(ngModel)]="triptype"
+            >
+              <option selected disabled value="0">Select Trip Type</option>
+              <option value="Log In">Log In</option>
+              <option value="Log Out">Log Out</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Shift Time<span class="span"></span></p>
+          <div>
+            <input
+              type="time"
+              class="form-control"
+              name="ShiftTime"
+              id="ShiftTime"
+              [(ngModel)]="ShiftTime"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Pick up Location<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="pickuplocation"
+              id="pickuplocation"
+              [(ngModel)]="pickuplocation"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Drop Location<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="LocationID"
+              name="LocationID"
+              [(ngModel)]="LocationID"
+            >
+              <option selected disabled value="0">
+                Select Office Location
+              </option>
+              <option
+                value="{{ data.id }}"
+                *ngFor="let data of OfficeLoactionsdata"
+              >
+                {{ data.officeLoactionCode }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Drop Location<span class="span">*</span></p>
+          <div *ngIf="triptype == 'Log In'">
+            <select class="form-control inputfield" id="location">
+              <option selected disabled value="0">
+                Select Office Location
+              </option>
+              <option
+                value="{{ leavetype.id }}"
+                *ngFor="let leavetype of OfficeLoactions"
+              >
+                {{ leavetype.officeLoactionCode }}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="triptype == 'Log Out'">
+            <input
+              type="text"
+              class="form-control"
+              name="pickuplocation"
+              id="pickuplocation"
+              [(ngModel)]="pickuplocation"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="insertEmployeeTrips()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="updateEmployeeTrips()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

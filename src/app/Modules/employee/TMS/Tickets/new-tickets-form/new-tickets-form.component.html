@@ -1,0 +1,112 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Enter Your Ticket Details</p>
+                <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon">
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>Raised Date<span class="span">*</span></p>
+                    <div>
+                        <input type="date" class="form-control" name="date" [(ngModel)]="raisedDate" id="date" onkeydown="return false">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Subject<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Subject" name="short" [(ngModel)]="subject" id="short">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Department<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="department" name="department"  [(ngModel)]="department">
+                            <option selected disabled value="">Select Department</option>
+                            <option value="{{data.id}}" *ngFor="let data of departmentList">{{data.short}}</option>                            
+                        </select>
+                    </div>
+                </div> 
+                <div class="popupinputs">
+                    <p>City<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="city" [(ngModel)]="cityID"  name="city" >
+                            <option selected disabled value="">Select City</option>
+                            <option value="{{data.id}}" *ngFor="let data of cityList">{{data.short}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <div class="popupinputs">
+                    <p>Priority<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="priority" name="priority" [(ngModel)]="priority">
+                            <option selected disabled value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <div class="popupinputs">
+                    <p>Location<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Location" name="short" [(ngModel)]="area" id="short">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Address<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Address" name="short" [(ngModel)]="address" id="short">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Issue<span class="span">*</span></p>
+                    <div>
+                        <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="issue"></angular-editor>
+                        <!-- <textarea name="text" id="text" cols="30" rows="10" class="form-control"  [(ngModel)]="issue" >Enter Issue.....</textarea> -->
+                        <!-- <input type="text" class="form-control" placeholder="Issue" [(ngModel)]="issue" name="short" id="short"> -->
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Attachment</p>
+                    <div>
+                        <ngx-dropzone accept=".png,.jpg,.jpeg" (change)="onSelect21($event)" class="dropFile">
+                            <img src="assets/Images/MicrosoftTeams-image.png" *ngIf="attachments21.length==0"
+                                class="img-set dropdowning">
+                            <ngx-dropzone-label>Drop files here<br>only jpg/png/jpeg (max 5mb)</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of attachments21" [removable]="true"
+                                (removed)="onRemove21(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
+                    <a *ngIf="ID!=undefined" href="{{attachment}}" target="_blank">
+                        <img width="25" height="25" border="0" align="center" src="assets/attached.png" />
+                    </a>
+                </div>
+                <!-- <div class="popupinputs">
+                    <p>Attachment<span class="span">*</span></p>
+                    <ngx-dropzone  [multiple]="false">
+                        <ngx-dropzone-label>Drop files here, Only PDF & JPEG (max 5mb)</ngx-dropzone-label>
+                        <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove()"
+                          *ngFor="let f of files" [file]="f">
+                          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                      </ngx-dropzone>
+                </div> -->
+
+                <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+                    <button class="close-button" (click)="cancel()">Cancel</button>
+                    <button class="submit-button"  (click)="submit()">Submit</button>
+                    <!-- <button class="submit-button">Update</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

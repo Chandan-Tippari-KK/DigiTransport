@@ -1,0 +1,274 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add Company</p>
+        <img
+          src="assets/Images/revamp/cancle-icon.png"
+          (click)="cancel()"
+          class="closeicon"
+        />
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>Company<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Company"
+              name="CompanyName"
+              [(ngModel)]="CompanyName"
+              id="CompanyName"
+            />
+          </div>
+        </div>
+
+        <div class="popupinputs">
+          <p>Address<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Address"
+              name="Address"
+              [(ngModel)]="Address"
+              id="Address"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Contact Person Mobile<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Contact Person Mobile"
+              name="MobileNumber"
+              [(ngModel)]="MobileNumber"
+              id="MobileNumber"
+              [minlength]="10"
+              [maxlength]="10"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Contact Person Email<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Contact Person Email"
+              name="Email"
+              [(ngModel)]="Email"
+              id="Email"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Area<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Area"
+              name="Area"
+              [(ngModel)]="Area"
+              id="Area"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location<span class="span">*</span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+              name="OfficeLocation"
+              [(ngModel)]="OfficeLocation"
+              id="OfficeLocation"
+            />
+          </div>
+        </div>
+
+        <!-- <div class="popupinputs">
+          <p>Office Location<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Location"
+              name="OfficeLocation"
+              [(ngModel)]="OfficeLocation"
+              id="OfficeLocation"
+            />
+          </div>
+        </div> -->
+        <div class="popupinputs">
+          <p>Office Code<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code"
+              name="OfficeCode"
+              [(ngModel)]="OfficeCode"
+              id="OfficeCode"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location 1<span class="span"></span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code 1<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code"
+              name="OfficeCode1"
+              [(ngModel)]="OfficeCode1"
+              id="OfficeCode1"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location 2<span class="span"></span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code 2<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code 2"
+              name="OfficeCode2"
+              [(ngModel)]="OfficeCode2"
+              id="OfficeCode2"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location 3<span class="span"></span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code 3<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code 3"
+              [(ngModel)]="OfficeCode3"
+              name="OfficeCode3"
+              id="OfficeCode3"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location 4<span class="span"></span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code 4<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code 4"
+              name="OfficeCode4"
+              [(ngModel)]="OfficeCode4"
+              id="OfficeCode4"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location 5<span class="span"></span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code 5<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code 5"
+              name="OfficeCode5"
+              [(ngModel)]="OfficeCode5"
+              id="OfficeCode5"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="insertCompany()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="updateCompany()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

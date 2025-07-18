@@ -1,0 +1,15 @@
+  .validation-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  #otp{
+    display: flex;
+      flex-direction: row;
+      margin-top: 16px;
+      
+  }
+  .passwordbox{
+    width: 10%;
+  }
+  

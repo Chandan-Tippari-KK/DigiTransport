@@ -1,0 +1,103 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li><a class="Heading">
+                        <p class="Heading">Rejected Tickets</p>
+                    </a>
+                    <hr class="line-border">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="assets/Images/revamp/filter.svg" class="filter-img">
+                <p class="filter">Filter by:</p>
+            </div>
+            <div class="cardinputs">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="search" class="form-control search-icon">
+            </div>
+            <div class="cardinputs">
+                <input type="bsdate" placeholder="mm/dd/yyyy-mm/dd/yyyy" class="form-control" bsDaterangepicker
+                    [(ngModel)]="date" [bsConfig]="{ showWeekNumbers:false }" (ngModelChange)="getEndDate($event)">
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredDepartment($event)">
+                    <option value="all">Select Department</option>
+                    <option *ngFor="let data of departmentData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredCity($event)">
+                    <option value="all">Select City</option>
+                    <option *ngFor="let data of cityData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-slider--container">
+        <div id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span> {{(rejectList|filter:search)?.length}} </span>RESULT(S)</p>
+                </div>
+            </div>
+
+            <div class="listscroll">
+                <table class="table">
+                    <thead>
+                        <tr class="head">
+                            <th>Ticket No</th>
+                            <th>Raised Date</th>
+                            <th>Rejected Date</th>
+                            <!-- <th>Closed Date</th> -->
+                            <th>Subject</th>
+                            <th>Issue</th>
+                            <th>Department</th>
+                            <th>City</th>
+                            <th>Area</th>
+                            <!-- <th>Issue</th> -->
+                            <th>Rejected Comments</th>
+                            <th>Attachment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of rejectList | filter:search | paginate: { itemsPerPage: 25, currentPage: page }">
+                            <td>000{{data.id}}</td>
+                            <td>{{data.raisedDate|date}}</td>
+                            <td>{{data.rejectedDate|date}}</td>
+                            <!-- <td>{{data.closedDate|date}}</td> -->
+                            <td>{{data.subject}}</td>
+                            <td>{{data.issue}}</td>
+                            <td>{{data.departmentName}}</td>
+                            <td>{{data.cityName}}</td>
+                            <td>{{data.area}}</td>
+                            <!-- <td>{{data.issue}}</td> -->
+                            <td>{{data.rejectComments}}</td>
+                            <td>
+                                <a *ngIf="data.attachment!=null" href="{{data.attachment}}" target="_blank"> <img src="assets/Images/image.png"
+                                        style="width:20px; height:20px" alt="data.img"></a>
+                                        <p *ngIf="data.attachment==null">'NA'</p>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="NoResultShow" *ngIf="(rejectList).length==0">
+                    <b>Sorry, we couldn't find any results.</b></span> <br>
+            </div>
+
+            <div class="text-right">
+                <br>
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="page = $event" class="poppinns"></pagination-controls>
+            </div>
+        </div>
+
+
+    </div>
+</div>

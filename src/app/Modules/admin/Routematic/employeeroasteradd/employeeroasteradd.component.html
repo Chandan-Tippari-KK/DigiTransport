@@ -1,0 +1,169 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add Roaster</p>
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>Area<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="Area"
+              name="Area"
+              [(ngModel)]="Area"
+            >
+              <option selected disabled value="0">Select Area</option>
+              <option *ngFor="let data of AreaData" value="{{ data.id }}">
+                {{ data.short }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Employee<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="Employee"
+              name="Employee"
+              [(ngModel)]="Employee"
+            >
+              <option selected disabled value="0">Select Employee</option>
+              <option *ngFor="let data of EmployeeData" value="{{ data.id }}">
+                {{ data.firstName }} {{ data.lastName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="popupinputs">
+          <p>Trip Type<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="triptype"
+              name="triptype"
+              [(ngModel)]="triptype"
+            >
+              <option selected disabled value="0">Select Trip Type</option>
+              <option value="Log In">Log In</option>
+              <option value="Log Out">Log Out</option>
+            </select>
+          </div>
+        </div>
+      
+
+        <div class="popupinputs">
+          <p>Route<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="Route"
+              name="Route"
+              [(ngModel)]="Route"
+            >
+              <option selected disabled value="0">Select Route</option>
+              <option *ngFor="let data of RouteData" value="{{ data.id }}">
+                {{ data.routeCode }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="popupinputs">
+          <p>Shift Time<span class="span"></span></p>
+          <div>
+            <input
+              type="time"
+              class="form-control"
+              name="Company"
+              id="Company"
+            />
+          </div>
+        </div> -->
+        <!-- <div class="popupinputs">
+          <p>Employee<span class="span">*</span></p>
+          <div>
+            <ng-multiselect-dropdown
+              [placeholder]="'Select Employee'"
+              [settings]="dropdownSettings"
+              [data]="dropdownList"
+              [(ngModel)]="selectedItems"
+              (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+        </div> -->
+
+        <!-- <div class="popupinputs" *ngIf="triptype != 1">
+          <p>Pick up Location<span class="span">*</span></p>
+          <div>
+            <select class="form-control inputfield" id="Status" name="Status">
+              <option selected disabled value="0">
+                Select Pick uP Location
+              </option>
+              <option value="Electric">AMZ-1</option>
+              <option value="Disel">AMZ-2</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="popupinputs" *ngIf="triptype == 1">
+          <p>Pick Up Address<span class="span"></span></p>
+
+          <input
+            class="form-control inputfield"
+            type="text"
+            placeholder="No. 29/BA,5th cross, Kodhandaram nilaya, 6th main, Lakshnappa Garden, BSK 3rd Stage,
+                    Bangalore - 560085"
+          />
+        </div> -->
+        <!-- <div class="popupinputs" *ngIf="triptype == 1">
+          <p>Drop Location<span class="span">*</span></p>
+          <div>
+            <select class="form-control inputfield" id="Status" name="Status">
+              <option selected disabled value="0">
+                Select Office Location
+              </option>
+              <option value="Electric">AMZ-1</option>
+              <option value="Disel">AMZ-2</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="popupinputs" *ngIf="triptype != 1">
+          <p>Drop Address<span class="span"></span></p>
+          <input
+            class="form-control inputfield"
+            type="text"
+            placeholder="No. 29/BA,5th cross, Kodhandaram nilaya, 6th main, Lakshnappa Garden, BSK 3rd Stage,
+                    Bangalore - 560085"
+          />
+        </div> -->
+        <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="insertEmployeeRoaster()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="updateEmployeeRoaster()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

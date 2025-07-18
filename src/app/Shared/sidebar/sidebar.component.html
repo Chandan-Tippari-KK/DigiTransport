@@ -1,0 +1,590 @@
+<div id="mySidebar" class="sidebarss">
+  <a
+    *ngIf="login == 1"
+    data-toggle="collapse"
+    data-target="#Client"
+    [ngClass]="
+      active == 1 && !mini
+        ? 'menu1'
+        : active == 1 && mini
+        ? 'menu-mini'
+        : 'menu'
+    "
+  >
+    <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+      <img
+        *ngIf="active == 1 && !mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <img
+        *ngIf="active != 1"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_blue.svg"
+      />
+      <img
+        *ngIf="active == 1 && mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <p class="icon-text d-flex" *ngIf="!mini">Client</p>
+    </div>
+  </a>
+  <div id="Client" class="collapse" [ngClass]="mini ? '' : ' sub-collapse'">
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="Company()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 177 && !mini
+          ? 'menu1'
+          : active == 177 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 177 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 177"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 177 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Client</p>
+      </div>
+    </a>
+
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="ClientOffice()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 178 && !mini
+          ? 'menu1'
+          : active == 178 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 178 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 178"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 178 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Client Office</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1"
+      (click)="Fleet()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 15 && !mini
+          ? 'menu1'
+          : active == 15 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 15 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 15"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 15 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Fleet</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1"
+      (click)="Drivers()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 16 && !mini
+          ? 'menu1'
+          : active == 16 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 16 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 16"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 16 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Drivers</p>
+      </div>
+    </a>
+  </div>
+  <a
+    *ngIf="login == 1"
+    data-toggle="collapse"
+    data-target="#Employee"
+    [ngClass]="
+      active == 1 && !mini
+        ? 'menu1'
+        : active == 1 && mini
+        ? 'menu-mini'
+        : 'menu'
+    "
+  >
+    <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+      <img
+        *ngIf="active == 1 && !mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <img
+        *ngIf="active != 1"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_blue.svg"
+      />
+      <img
+        *ngIf="active == 1 && mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <p class="icon-text d-flex" *ngIf="!mini">Employee</p>
+    </div>
+  </a>
+  <div id="Employee" class="collapse" [ngClass]="mini ? '' : ' sub-collapse'">
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="Employee()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 17 && !mini
+          ? 'menu1'
+          : active == 17 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 17 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 17"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 17 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Employee</p>
+      </div>
+    </a>
+
+    <a
+      (click)="EmployeeRoaster()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 101 && !mini
+          ? 'menu1'
+          : active == 101 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 101 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 101"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 101 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Employee Roaster</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="fleetmappingdash()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 102 && !mini
+          ? 'menu1'
+          : active == 102 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 102 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 102"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 102 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Vehicle Assignment</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="AssignedTrips()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 10.14 && !mini
+          ? 'menu1'
+          : active == 10.14 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 10.14 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 10.14"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 10.14 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Assigned Trips</p>
+      </div>
+    </a>
+
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="ApprovedTrips()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 10.15 && !mini
+          ? 'menu1'
+          : active == 10.15 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 10.15 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 10.15"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 10.15 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Approved Trips</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="routetracking()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 10.16 && !mini
+          ? 'menu1'
+          : active == 10.16 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 10.16 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 10.16"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 10.16 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Route Tracking</p>
+      </div>
+    </a>
+  </div>
+  <a
+    *ngIf="roleid == 2 || roleid == 3"
+    (click)="tripdetails()"
+    data-toggle="collapse"
+    [ngClass]="
+      active == 103 && !mini
+        ? 'menu1'
+        : active == 103 && mini
+        ? 'menu-mini'
+        : 'menu'
+    "
+  >
+    <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+      <img
+        *ngIf="active == 103 && !mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <img
+        *ngIf="active != 103"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_blue.svg"
+      />
+      <img
+        *ngIf="active == 103 && mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <p class="icon-text" *ngIf="!mini">Trip Details</p>
+    </div>
+  </a>
+  <a
+    *ngIf="login == 1"
+    data-toggle="collapse"
+    data-target="#Master"
+    [ngClass]="
+      active == 1 && !mini
+        ? 'menu1'
+        : active == 1 && mini
+        ? 'menu-mini'
+        : 'menu'
+    "
+  >
+    <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+      <img
+        *ngIf="active == 1 && !mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <img
+        *ngIf="active != 1"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_blue.svg"
+      />
+      <img
+        *ngIf="active == 1 && mini"
+        class="icon"
+        src="assets/Images/sidebaricons/staff_icon_white.svg"
+      />
+      <p class="icon-text d-flex" *ngIf="!mini">Master</p>
+    </div>
+  </a>
+  <div id="Master" class="collapse" [ngClass]="mini ? '' : ' sub-collapse'">
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="RouteMaster()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 10.12 && !mini
+          ? 'menu1'
+          : active == 10.12 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 10.12 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 10.12"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 10.12 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Route Master</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="Guard()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 179 && !mini
+          ? 'menu1'
+          : active == 179 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 179 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 179"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 179 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Staff</p>
+      </div>
+    </a>
+
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="AreaMaster()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 10.13 && !mini
+          ? 'menu1'
+          : active == 10.13 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 10.13 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 10.13"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 10.13 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Area Master</p>
+      </div>
+    </a>
+    <a
+      *ngIf="roleid == 1 || roleid == 2"
+      (click)="ClientLogin()"
+      data-toggle="collapse"
+      [ngClass]="
+        active == 1014 && !mini
+          ? 'menu1'
+          : active == 1014 && mini
+          ? 'menu-mini'
+          : 'menu'
+      "
+    >
+      <div class="test_case" [ngClass]="mini ? 'justify-content-center' : ''">
+        <img
+          *ngIf="active == 1014 && !mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <img
+          *ngIf="active != 1014"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_blue.svg"
+        />
+        <img
+          *ngIf="active == 1014 && mini"
+          class="icon"
+          src="assets/Images/sidebaricons/staff_icon_white.svg"
+        />
+        <p class="icon-text" *ngIf="!mini">Client Login</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- <br /><br /><br />
+<div *ngIf="!mini">
+    <img class="icon" src="assets/Images/revamp/siderbar-icon.png" class="sidebar-image" />
+    <br />
+    <p class="icon-text1">
+        Can’t find what you
+        <br />
+        are looking for?
+    </p>
+</div> -->
+
+<!-- <div *ngIf="!mini">
+    <div *ngIf="sidenav != true">
+        <a>
+            <button class="icon-text2">
+                Raise Ticket
+            </button>
+        </a>
+    </div>
+</div> -->

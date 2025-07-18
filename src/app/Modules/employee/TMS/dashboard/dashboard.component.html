@@ -1,0 +1,109 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="card card1">
+    <div class="d-flex flex-wrap">
+        <div class="d-flex align-items-center">
+            <img src="assets/Images/revamp/filter.svg" class="filter-img">
+            <p class="filter">Filter by:</p>
+        </div>
+      
+        <div class="cardinputs">
+            <input type="bsdate" placeholder="mm/dd/yyyy-mm/dd/yyyy" class="form-control" bsDaterangepicker
+                [(ngModel)]="date" [bsConfig]="{ showWeekNumbers:false }" (ngModelChange)="getEndDate($event)">
+        </div>
+        <div class="cardinputs">
+            <select class="form-control" (change)="filteredDepartment($event)">
+                <option value="all">Select All Department</option>
+                <option *ngFor="let data of departmentData" value="{{data.id}}">{{data.short}}</option>
+            </select>
+        </div>
+        <div class="cardinputs">
+            <select class="form-control" (change)="filteredCity($event)">
+                <option value="all">Select All City</option>
+                <option *ngFor="let data of cityData" value="{{data.id}}">{{data.short}}</option>
+            </select>
+        </div>
+    </div>
+</div><br>
+<div class="container-fluid card">
+    <div class="row mt-2">
+        <div class="col-12">
+            <p class="graph-label-head">Dashboard
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="row firstrow">
+        <div class="col-8 p-0">
+            <div class="hrgrapghdashcontent">
+                <div class="grapghdashinputs">
+                    <div class="grapghdashcard p-5">
+                        <p class="mt-2 card-head">New Tickets</p>
+                        <h3 class="mt-2 sm-head">{{newTicketList.length}} </h3>
+                    </div>
+
+                </div>
+
+                <div class="grapghdashinputs">
+                    <div class="grapghdashcard p-5 ">
+                        <p class="mt-2 card-head">Accepted Tickets </p>
+                        <h3 class="mt-2 sm-head">{{accpetList.length}} </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hrgrapghdashcontent mt-2">
+                <div class="grapghdashinputs">
+                    <div class="grapghdashcard p-5">
+                        <p class="mt-2 card-head">Rejected Tickets</p>
+                        <h3 class="mt-2 sm-head">{{rejectList.length}} </h3>
+                    </div>
+
+                </div>
+
+                <div class="grapghdashinputs">
+                    <div class="grapghdashcard p-5 ">
+                        <p class="mt-2 card-head">Closed Tickets</p>
+                        <h3 class="mt-2 sm-head">{{closedData.length}} </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 p-0">
+            <div class="hrgrapghdashcard1">
+                <div class="">
+                    <div class="">
+                        <p class="card-head">Status Wise</p>
+                        <div id="chart">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row firstrow">
+        <div class="col-4 p-0">
+            <div class="hrgrapghdashcard1">
+                <div class="">
+                    <div class="">
+                        <p class="card-head">Department Wise </p>
+                        <div id="chart2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 p-0">
+            <div class="hrgrapghdashcard1">
+                <div class="">
+                    <div class="">
+                        <p class="card-head">Status Wise</p>
+                        <div id="chart1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

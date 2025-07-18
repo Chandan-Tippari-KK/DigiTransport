@@ -1,0 +1,139 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li><a class="Heading">
+                        <p class="Heading">Closed Tickets</p>
+                    </a>
+                    <hr class="line-border">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="assets/Images/revamp/filter.svg" class="filter-img">
+                <p class="filter">Filter by:</p>
+            </div>
+          
+            <div class="cardinputs">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="search" class="form-control search-icon">
+            </div>
+            <div class="cardinputs">
+                <input type="bsdate" placeholder="mm/dd/yyyy-mm/dd/yyyy" class="form-control" bsDaterangepicker
+                    [(ngModel)]="date" [bsConfig]="{ showWeekNumbers:false }" (ngModelChange)="getEndDate($event)">
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredDepartment($event)">
+                    <option value="all">Select Department</option>
+                    <option *ngFor="let data of departmentData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+            <div class="cardinputs">
+                <select class="form-control" (change)="filteredCity($event)">
+                    <option value="all">Select City</option>
+                    <option *ngFor="let data of cityData" value="{{data.id}}">{{data.short}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-slider--container">
+        <div id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span>{{(closedData|filter:search)?.length}} </span>RESULT(S)</p>
+                </div>
+            </div>
+
+            <div class="listscroll">
+                <table class="table">
+                    <thead>
+                        <tr class="head">
+                            <th>Ticket No</th>
+                            <th>Raised Date</th>
+                            <th>Accepted Date</th>
+                            <th>Closed Date</th>
+                            <th>Assigned To</th>
+                            <th>Subject</th>
+                            <th>Department</th>
+                            <th>City</th>
+                            <th>Area</th>
+                            <th>Issue</th>
+                            <th>Closing Comments</th>
+                            <th>Aging</th>
+                            <th>Uploaded Attachment</th>
+                            <th>Closing Attachment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of closedData | filter:search |paginate: { itemsPerPage: 25, currentPage: page }">
+                            <td>000{{data.id}}</td>
+                            <td>{{data.raisedDate|date}}</td>
+                            <td>{{data.acceptedDate|date}}</td>
+                            <td>{{data.closedDate | date}}</td>
+                            <td>{{data.staffname}}</td>
+                            <td>{{data.subject}}</td>
+                            <td>{{data.departmentName}}</td>
+                            <td>{{data.cityName}}</td>
+                            <td>{{data.area}}</td>
+                            <td>{{data.issue}}</td>
+                            <td>{{data.closingComments}}</td>
+                            <td>{{data.aging}}</td>
+                            <td>
+                                <a href="{{data.attachment}}" target="_blank"> <img src="assets/Images/image.png" *ngIf="data.attachment!==null" 
+                                        style="width:20px; height:20px" alt="data.img"></a>
+                                        <p *ngIf="data.attachment==null">'NA'</p>
+                            </td>
+                            <td>
+                                <a href="{{data.closedAttachment}}" target="_blank"> <img src="assets/Images/image.png" *ngIf="data.attachment!==null" 
+                                        style="width:20px; height:20px" alt="data.img"></a>
+                                        <p *ngIf="data.attachment==null">'NA'</p>
+                            </td>
+                            <!-- <td class="onelinetext" > <img class="dashedit-icon" src="assets/Images/Edit.svg" [ngbTooltip]="tipContenteidt"
+                                    tooltipClass="my-custom-class">
+                                <img class="dashedit-icon" 
+                                    src="assets/Images/delete.svg" [ngbTooltip]="tipContentCancel"
+                                    tooltipClass="my-custom-class">
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #tipContentCancel>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Delete</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+
+                                    <ng-template #tipContenteidt>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Edit</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="NoResultShow" *ngIf="(closedData).length==0">
+                    <b>Sorry, we couldn't find any results.</b></span> <br>
+            </div>
+
+            <div class="text-right">
+                <br>
+                <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""
+                class="poppinns"></pagination-controls>
+            </div>
+        </div>
+
+
+    </div>
+</div>

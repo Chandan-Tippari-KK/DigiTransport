@@ -1,0 +1,110 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="card">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <p class="Heading">Employee Details</p>
+                <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+            </div>
+
+            <div class="popupcontent">
+                <div class="popupinputs">
+                    <p>Employee Code<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Employee Code" [(ngModel)]="employeeCode"
+                            name="employeeCode" id="employeeCode">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>First Name<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="firstName"
+                            name="firstName" id="firstName">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Last Name<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+                            [(ngModel)]="lastName" id="lastName">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>ID Number<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="ID Number" name="idNumber"
+                            [(ngModel)]="idNumber" id="idNumber">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Joining Date<span class="span">*</span></p>
+                    <div>
+                        <input type="date" class="form-control" name="joiningDate" [(ngModel)]="joiningDate"
+                            id="joiningDate" onkeydown="return false">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Phone Number<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Phone Number" pattern="[6789][0-9]{9}"
+                            maxlength="10" [(ngModel)]="phoneNumber" name="phoneNumber" id="phoneNumber">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Email ID<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Email ID" [(ngModel)]="emailID"
+                            name="emailID" id="emailID">
+                    </div>
+                </div>
+ 
+                <div class="popupinputs">
+                    <p>Gender<span class="span">*</span></p>
+                    <div>
+                        <select class="form-control inputfield" id="Gender" [(ngModel)]="gender" name="Gender">
+                            <option selected disabled value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Address<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Address" [(ngModel)]="address" name="address" id="Addraddressess"
+                            >
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Area<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" [(ngModel)]="area" placeholder="Area" name="area" id="area">
+                    </div>
+                </div>
+
+                <div class="popupinputs">
+                    <p>Longitude<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Longitude" [(ngModel)]="longitude"  name="longitude" id="longitude">
+                    </div>
+                </div>
+                <div class="popupinputs">
+                    <p>Latitude<span class="span">*</span></p>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Latitude" [(ngModel)]="latitude" name="latitude" id="latitude">
+                    </div>
+                </div>
+               
+                <div> <br>
+                    <button *ngIf="ID!=undefined" class="submit-button" (click)="UpdateStaff()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

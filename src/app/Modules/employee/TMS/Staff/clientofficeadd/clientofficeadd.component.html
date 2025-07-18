@@ -1,0 +1,85 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add Office Location</p>
+        <img
+          src="assets/Images/revamp/cancle-icon.png"
+          (click)="cancel()"
+          class="closeicon"
+        />
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>Client<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="ClientID"
+              name="ClientID"
+              [(ngModel)]="ClientID"
+            >
+              <option selected disabled value="0">Select Client</option>
+              <option *ngFor="let data of CompanyData" value="{{ data.id }}">
+                {{ data.companyName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="popupinputs">
+          <p>Office Location<span class="span">*</span></p>
+          <div>
+            <input
+              class="form-control"
+              ngx-google-places-autocomplete
+              [options]="autocompleteOptions"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+              [(ngModel)]="OfficeLocation"
+              id="OfficeLocation"
+              name="OfficeLocation"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Code<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Office Code"
+              name="OfficeCode"
+              [(ngModel)]="OfficeCode"
+              id="OfficeCode"
+            />
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="insertOfficeLocation()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="updateOfficeLocation()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,814 @@
+<app-commonalertpage
+  [messageId]="messageId"
+  *ngIf="showPopup == 1"
+></app-commonalertpage>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <p class="Heading">Add New Fleet</p>
+        <!-- <img src="assets/Images/revamp/cancle-icon.png" (click)="cancel()" class="closeicon"> -->
+      </div>
+
+      <div class="popupcontent">
+        <div class="popupinputs">
+          <p>Vehicle Reg No<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Vehicle Reg No"
+              [(ngModel)]="vehicleRegNo"
+              name="Vehicle Reg No"
+              id="Vehicle Reg No"
+            />
+          </div>
+        </div>
+
+        <!-- <div class="popupinputs">
+          <p>Route No<span class="span">*</span></p>
+          <div>
+            <input type="text" class="form-control" placeholder="Route No" name="Route No" [(ngModel)]="routeNo"
+              id="Route No" />
+          </div>
+        </div> -->
+        <div class="popupinputs">
+          <p>Route<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="Route"
+              name="Route"
+              [(ngModel)]="routeNo"
+            >
+              <option selected disabled value="0">Select Route</option>
+              <option *ngFor="let data of RouteData" value="{{ data.id }}">
+                {{ data.routeCode }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Vehicle Type<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="vehicleType"
+              [(ngModel)]="vehicleType"
+              name="vehicleType"
+            >
+              <option selected disabled value="0">Select Vehicle Type</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Bus">Bus</option>
+              <option value="TT">Tempo Traveller</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Billing Tag<span class="span">*</span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="billingTag"
+              name="billingTag"
+              [(ngModel)]="billingTag"
+            >
+              <option selected disabled value="0">Select Billing Tag</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Trackee ID<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Trackee ID"
+              pattern="[6789][0-9]{9}"
+              maxlength="10"
+              name="Trackee ID"
+              id="TrackeeID"
+              [(ngModel)]="trackeeID"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Trackee Name<span class="span">*</span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Trackee Name"
+              name="trackeeName"
+              id="trackeeName"
+              [(ngModel)]="trackeeName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Vehicle Status<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="vehicleStatus"
+              name="vehicleStatus"
+              [(ngModel)]="vehicleStatus"
+            >
+              <option selected disabled value="0">Select Status</option>
+              <option value="Avilable">Avilable</option>
+              <option value="Not-Avilable">Not-Avilable</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Office Location<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="officeLocation"
+              name="officeLocation"
+              [(ngModel)]="officeLocation"
+            >
+              <option selected disabled value="0">Office Location</option>
+              <option value="AMZ-1">AMZ-1</option>
+              <option value="AMZ-2">AMZ-2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="popupinputs">
+          <p>Registration Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="registrationDate"
+              name="registrationDate"
+              [(ngModel)]="registrationDate"
+              id="registrationDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Vehicle Induction<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="vehicleInduction "
+              name="vehicleInduction"
+              [(ngModel)]="vehicleInduction"
+              id="emailID"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Vehicle No<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Vehicle No"
+              name="vehicleNo"
+              [(ngModel)]="vehicleNo"
+              id="vehicleNo"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Registration Exp Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="registration Exp Date"
+              name="registrationExpDate"
+              [(ngModel)]="registrationExpDate"
+              id="registrationExpDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>First Aid Kit Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="firstAid Kit Date"
+              name="firstAidKitDate"
+              [(ngModel)]="firstAidKitDate"
+              id="firstAidKitDate"
+            />
+          </div>
+        </div>
+
+        <div class="popupinputs">
+          <p>Fire Extinguisher Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="fireExtinguisherDate"
+              name="fireExtinguisherDate"
+              [(ngModel)]="fireExtinguisherDate"
+              id="fireExtinguisherDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Driver Name<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Driver Name"
+              name="driverName"
+              [(ngModel)]="driverName"
+              id="driverName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Make<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Make"
+              name="make"
+              [(ngModel)]="make"
+              id="make"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Model<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Model"
+              name="model"
+              [(ngModel)]="model"
+              id="model"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Basic<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Basic"
+              name="basic"
+              [(ngModel)]="basic"
+              id="basic"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Chassis No<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="chassisNo"
+              name="chassisNo"
+              [(ngModel)]="chassisNo"
+              id="chassisNo"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Permit Expiry Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="permitExpDate"
+              name="permitExpDate"
+              [(ngModel)]="permitExpDate"
+              id="permitExpDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Insurance Expiry Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="insuranceExpDate"
+              name="insuranceExpDate"
+              [(ngModel)]="insuranceExpDate"
+              id="insuranceExpDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Fitness Expiry Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="fitnessExpDate"
+              name="fitnessExpDate"
+              [(ngModel)]="fitnessExpDate"
+              id="fitnessExpDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Road Tax Validity Expiry<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="roadTaxValidityExp"
+              name="roadTaxValidityExp"
+              [(ngModel)]="roadTaxValidityExp"
+              id="roadTaxValidityExp"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>PUC Expiry Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="pucExpDate"
+              name="pucExpDate"
+              [(ngModel)]="pucExpDate"
+              id="pucExpDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Kms Run Before Onboarding<span class="span"></span></p>
+          <div>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Kms Run Before Onboarding"
+              name="kmsRunBeforeOnboarding"
+              [(ngModel)]="kmsRunBeforeOnboarding"
+              id="kmsRunBeforeOnboarding"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Insurance Agency Name<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Insurance Agency Name"
+              name="insuranceAgencyName"
+              [(ngModel)]="insuranceAgencyName"
+              id="insuranceAgencyName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Owner Name<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Owner Name"
+              name="ownerName"
+              [(ngModel)]="ownerName"
+              id="ownerName"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>CC Permit Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="ccPermitDate"
+              name="ccPermitDate"
+              [(ngModel)]="ccPermitDate"
+              id="ccPermitDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Owner Address<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              cols="30"
+              rows="10"
+              class="form-control"
+              placeholder="Owner Address"
+              name="ownerAddress"
+              [(ngModel)]="ownerAddress"
+              id="ownerAddress"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Owner<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="owner"
+              name="owner"
+              [(ngModel)]="owner"
+            >
+              <option selected disabled value="0">Select Owner</option>
+              <option value="Company">Company</option>
+              <option value="Vendor">Vendor</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Valid Token Tax Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="validTokenTaxDate"
+              name="validTokenTaxDate"
+              [(ngModel)]="validTokenTaxDate"
+              id="validTokenTaxDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Passenger Tax Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="passengerTaxDate"
+              name="passengerTaxDate"
+              [(ngModel)]="passengerTaxDate"
+              id="passengerTaxDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>GPS Installed<span class="span"></span></p>
+          <div style="display: flex; align-items: baseline">
+            <input
+              type="radio"
+              id="gpsInstalled"
+              name="gpsInstalled"
+              value="Yes"
+              [(ngModel)]="gpsInstalled"
+            />&nbsp; <label for="html">Yes</label><br />
+            &nbsp; &nbsp;
+            <input
+              type="radio"
+              id="gpsInstalled"
+              name="gpsInstalled"
+              value="No"
+              [(ngModel)]="gpsInstalled"
+            />&nbsp;
+            <label for="css">No</label>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>GPS Installtion Date<span class="span"></span></p>
+          <div>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="gpsInstalltionDate"
+              name="gpsInstalltionDate"
+              [(ngModel)]="gpsInstalltionDate"
+              id="gpsInstalltionDate"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>CNG Fitted<span class="span"></span></p>
+          <div style="display: flex; align-items: baseline">
+            <input
+              type="radio"
+              id="cngFitted"
+              name="cngFitted"
+              [(ngModel)]="cngFitted"
+              value="Yes"
+            />&nbsp; <label for="html">Yes</label><br />
+            &nbsp; &nbsp;
+            <input
+              type="radio"
+              id="cngFitted"
+              name="cngFitted"
+              [(ngModel)]="cngFitted"
+              value="No"
+            />&nbsp;
+            <label for="css">No</label>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>CNG Fitted Endorsed in RC<span class="span"></span></p>
+          <div style="display: flex; align-items: baseline">
+            <input
+              type="radio"
+              id="cngFittedEndorsedinRc"
+              name="cngFittedEndorsedinRc"
+              [(ngModel)]="cngFittedEndorsedinRc"
+              value="Yes"
+            />&nbsp; <label for="html">Yes</label><br />
+            &nbsp; &nbsp;
+            <input
+              type="radio"
+              id="cngFittedEndorsedinRc"
+              name="cngFittedEndorsedinRc"
+              value="No"
+              [(ngModel)]="cngFittedEndorsedinRc"
+            />&nbsp;
+            <label for="css">No</label>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Mandatory Signature<span class="span"></span></p>
+          <div style="display: flex; align-items: baseline">
+            <input
+              type="radio"
+              id="mandatorySignature"
+              name="mandatorySignature"
+              [(ngModel)]="mandatorySignature"
+              value="Yes"
+            />&nbsp; <label for="html">Yes</label><br />
+            &nbsp; &nbsp;
+            <input
+              type="radio"
+              id="mandatorySignature"
+              name="mandatorySignature"
+              [(ngModel)]="mandatorySignature"
+              value="No"
+            />&nbsp;
+            <label for="css">No</label>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Engine Capacity(CC)<span class="span"></span></p>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Engine Capacity"
+              name="engineCapacity"
+              [(ngModel)]="engineCapacity"
+              id="engineCapacity"
+            />
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Fuel Type<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="fuelType"
+              name="fuelType"
+              [(ngModel)]="fuelType"
+            >
+              <option selected disabled value="0">Select Fuel Type</option>
+              <option value="Electric">Electric</option>
+              <option value="Disel">Diesel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="CNG">CNG</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Standard<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="standard"
+              name="standard"
+              [(ngModel)]="standard"
+            >
+              <option selected disabled value="0">Select Standard</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Air Conditioned<span class="span"></span></p>
+          <div>
+            <select
+              class="form-control inputfield"
+              id="airConditioned"
+              name="airConditioned"
+              [(ngModel)]="airConditioned"
+            >
+              <option selected disabled value="0">Select Standard</option>
+              <option selected disabled value="0">Yes</option>
+              <option selected disabled value="0">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>RC Book</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              (change)="onSelectrcBook($event)"
+              class="dropFile"
+              [(ngModel)]="rcBook"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentsrcBook.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentsrcBook"
+                [removable]="true"
+                (removed)="onRemovercBook(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Insurance Book</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              (change)="onSelectinsuranceBook($event)"
+              class="dropFile"
+              [(ngModel)]="insuranceBook"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentsinsuranceBook.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentsinsuranceBook"
+                [removable]="true"
+                (removed)="onRemoveinsuranceBook(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Permit Book</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              (change)="onSelectpermitBook($event)"
+              class="dropFile"
+              [(ngModel)]="permitBook"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentspermitBook.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentspermitBook"
+                [removable]="true"
+                (removed)="onRemovepermitBook(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Vehicle Induction Form</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              (change)="onSelectvehicleBook($event)"
+              class="dropFile"
+              [(ngModel)]="vehicleInductionForm"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentsvehicleBook.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentsvehicleBook"
+                [removable]="true"
+                (removed)="onRemovevehicleBook(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Fitness Certificate Form</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              class="dropFile"
+              (change)="onSelectFCform($event)"
+              [(ngModel)]="fitnessCertificateForm"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentsfitnessCertificateForm.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentsfitnessCertificateForm"
+                [removable]="true"
+                (removed)="onRemoveFCform(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="popupinputs">
+          <p>Fleet Photo</p>
+          <div>
+            <ngx-dropzone
+              accept=".png,.jpg,.jpeg"
+              class="dropFile"
+              (change)="onSelectfleetPhoto($event)"
+              [(ngModel)]="fleetPhoto"
+            >
+              <img
+                src="assets/Images/MicrosoftTeams-image.png"
+                *ngIf="attachmentfleetPhoto.length == 0"
+                class="img-set dropdowning"
+              />
+              <ngx-dropzone-label
+                >Drop files here<br />only jpg/png/jpeg (max
+                5mb)</ngx-dropzone-label
+              >
+              <ngx-dropzone-preview
+                *ngFor="let f of attachmentfleetPhoto"
+                [removable]="true"
+                (removed)="onRemovefleetPhoto(f)"
+              >
+                <ngx-dropzone-label
+                  >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                >
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end w-100 mt-4 mb-2 pr-2">
+          <button class="close-button" (click)="cancel()">Cancel</button>
+          <button
+            *ngIf="ID == undefined"
+            class="submit-button"
+            (click)="submit()"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="ID != undefined"
+            class="submit-button"
+            (click)="update()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,214 @@
+<app-commonalertpage [messageId]="messageId" *ngIf="showPopup==1"></app-commonalertpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <li><a class="Heading">
+                        <p class="Heading">Vehicle Assignment</p>
+                    </a>
+                    <hr class="line-border">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="assets/Images/revamp/filter.svg" class="filter-img">
+                <p class="filter">Filter by:</p>
+            </div>
+
+            <div class="cardinputs">
+                <input type="text" placeholder="Search" id="term" [(ngModel)]="search" class="form-control search-icon">
+            </div>
+
+            <div class="cardinputs" (click)="showDialog()">
+                <button class="butn-sadow"> <img src="assets/Images/plus.svg" class="plus-icon">Add New</button>
+            </div>
+            <!-- <div class="cardinputs">
+                <button class="butn-sadow" type="button" >Reset</button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="tab-slider--container">
+        <div id="tab1">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="show3res">SHOWING <span> 2 </span>RESULT(S)</p>
+                </div>
+            </div>
+
+            <div class="listscroll">
+                <table class="table">
+                    <thead>
+                        <tr class="head">
+                            <th>Trip ID </th>
+                            <th>Vehicle </th>
+                            <th>Date</th>
+                            <th>Trip Type</th>
+                            <th>Shift Time</th>
+                            <th>Drop Location</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>000111</td>
+                            <td>SPD-4970(12)</td>
+                            <td>2024-02-10</td>
+                            <td>Log In </td>
+                            <td>9:30 AM</td>
+                            <td>AMZ-1</td>
+
+                            <td style="display: flex;">
+                                <img class="dashedit-icon" src="assets/Images/info.png" data-toggle="modal"
+                                    data-target="#assignModal" [ngbTooltip]="tipContentApprove"
+                                    tooltipClass="my-custom-class">
+                                <img *ngIf="roleid==2" class="dashedit-icon" src="assets/Images/assign.png"
+                                    (click)="openDeletePopUp()" [ngbTooltip]="approve" tooltipClass="my-custom-class">
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #tipContentApprove>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Veiw Details</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #approve>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Approve</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>000112</td>
+                            <td>SPD-3576(6)</td>
+                            <td>2024-02-10</td>
+                            <td>Log In </td>
+                            <td>9:30 AM</td>
+                            <td>AMZ-1</td>
+                            <td style="display: flex;">
+                                <img class="dashedit-icon" src="assets/Images/info.png" data-toggle="modal"
+                                    data-target="#assignModal" [ngbTooltip]="tipContentApprove"
+                                    tooltipClass="my-custom-class">
+                                <img *ngIf="roleid==2" class="dashedit-icon" src="assets/Images/assign.png"
+                                    (click)="openDeletePopUp()" [ngbTooltip]="approve" tooltipClass="my-custom-class">
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #tipContentApprove>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Veiw Details</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div class="col-lg-2 Text p-0">
+                                    <ng-template #approve>
+                                        <div>
+                                            <div class="d-flex">
+                                                <div class="flex-column mt-2">
+                                                    <p class="tooltip-txtForIcons">Approve</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-right">
+                <br>
+                <pagination-controls previousLabel="" (pageChange)="page = $event" nextLabel=""
+                    class="poppinns"></pagination-controls>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="assignModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Details</h4>
+                <div data-toggle="tooltip" title="Add Attachments" data-dismiss="modal">
+                </div>
+                <button type="button" class="close " data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="listscroll">
+                    <table class="table">
+                        <thead>
+                            <tr class="head">
+                                <th>Seq No</th>
+                                <th>Employee Name</th>
+                                <th>Area </th>
+                                <th>Pick Up Time</th>
+                                <th>Drop Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>1</td>
+                                <td>Kumar </td>
+                                <td>Girinagar</td>
+                                <td>08:00 </td>
+                                <td>AMZ-1</td>
+                            </tr>
+                            <tr>
+
+                                <td>2</td>
+                                <td>Prashant </td>
+                                <td>Banashankari</td>
+                                <td>08:20 </td>
+                                <td>AMZ-1</td>
+                            </tr>
+                            <tr>
+
+                                <td>3</td>
+                                <td>Manoj </td>
+                                <td>Jayanagr</td>
+                                <td>08:40 </td>
+                                <td>AMZ-1</td>
+                            </tr>
+                            <tr>
+
+                                <td>4</td>
+                                <td>Arun </td>
+                                <td>JP Nagar</td>
+                                <td>08:55 </td>
+                                <td>AMZ-1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
