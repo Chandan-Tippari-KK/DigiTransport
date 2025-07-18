@@ -3712,7 +3712,7 @@ export class TMS {
     return this.http.get<any[]>(
       'https://maps.googleapis.com/maps/api/geocode/json?address=' +
       term +
-      '&key=AIzaSyBG5E7XAkl_v4bDBY1x-eGxujXHci58cFo'
+      '&key=YOUR_API_KEY'
     );
   }
   getdistancebylatlon(lat: any, lng: any, officelatng: any) {
@@ -3723,7 +3723,7 @@ export class TMS {
       officelatng +
       '&destination=' +
       addresslatlng +
-      '&mode=driving&sensor=false&key=AIzaSyBG5E7XAkl_v4bDBY1x-eGxujXHci58cFo'
+      '&mode=driving&sensor=false&key=YOUR_API_KEY'
     );
   }
 

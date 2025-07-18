@@ -82,7 +82,7 @@ import { AgmDirectionModule } from 'agm-direction';
     AdminRoutingModule,
     AgmDirectionModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBG5E7XAkl_v4bDBY1x-eGxujXHci58cFo'
+      apiKey: 'YOUR_API_KEY'
     }),
 
   ]

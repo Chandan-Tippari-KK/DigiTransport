@@ -78,7 +78,7 @@ import { SecurityGuardFormComponent } from './TMS/Staff/security-guard-form/secu
     SharedModuleModule,
     NgMultiSelectDropDownModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBG5E7XAkl_v4bDBY1x-eGxujXHci58cFo'
+      apiKey: 'YOUR_API_KEY'
     }),
 
     
